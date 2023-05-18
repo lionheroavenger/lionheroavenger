@@ -1,0 +1,270 @@
+
+
+.inform {
+    font-family: 'Courier New';
+}
+
+.font-effect-emboss {
+    font-size: 23px;
+    background-color: black;
+}
+
+span{
+    font-family: sans-serif;
+}
+
+img {
+    width: 200px;
+}
+
+.table-product img {
+    width: 275px;
+}
+
+.none-dot{
+    list-style: none;
+}
+
+.border-pro{
+    border: 1px solid black;
+}
+
+
+.product-form label {
+    width: 100px;
+    display: inline-block;
+}
+
+.bd-example {
+    padding: 1rem;
+}
+
+br {
+    padding-top: 10px;
+}
+
+.item-list {
+    transition: opacity .2s ease-in;
+    width: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+.container .products-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap:2rem;
+    border:1px solid black;
+}
+    
+.container .products-container .item {
+    text-align: center;
+    padding: 3rem 2rem; 
+    border:1px solid black; 
+    background-color:antiquewhite;
+}
+
+.container .list-container {
+    border:1px solid black;
+}
+
+.container .list-container .item {
+    text-align: left;
+    padding: 3rem 2rem; 
+    border:1px solid black; 
+    background-color:antiquewhite;
+}
+
+.none {
+    display: none;
+}
+
+a.disabled {
+    /*pointer-events: none;*/
+    cursor: default;
+    color: darkgrey;
+}
+
+a.disabled:hover {
+    color: darkgrey;
+}
+
+button {
+    display: inline;
+}
+
+.no1 .list {
+    background: none;
+}
+
+.no1 .grid {
+    background: none;
+}
+
+.no1 {
+    text-align: center;
+}
+
+.cont{
+    padding: 0.5rem 1rem;
+}
+
+
+.img_cart{
+    width: 35px;
+    height: 30px;
+}
+.global-nav__cart-indicator{
+    display: none;
+    background: #c31502 0% 0% no-repeat padding-box;
+    box-shadow: 0 0 8px #ffffff54;
+    border: 1px solid #fff;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: -5px;
+}   
+
+.global-nav__cart-count {
+    display: block;
+    color:  black;
+    font-weight: bold;
+    font-size: 12px;
+    top: -13px;
+    left: 4px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+}
+
+.global-nav__menu-link--cart {
+    position: relative;
+    justify-self: flex-end;
+}
+
+.cart-item-dropdown {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: subpixel-antialiased;
+    box-sizing: border-box;
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+    padding: 6px 9px;
+    font-family: inherit;
+    color: inherit;
+    font-size: 16px;
+    appearance: none;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAPCAYAAAA2yOUNAAAAj0lEQVR4Ab3QxQHCMBQGYGQ1BsIZBj3V2xM2BwuQ5L1zO0Fd/wY51iPfHxuladq+SZJMHS8QUqoVtveA5XhUgOaPqAe+1csG2/UUJnU4cjxfCinXCHQ4CqNo9g0gbCp/36HR7fF8FYv7BcojkIoWluMSQgRFX1sxbZcRFmfXhDHVwreQOwyVANOH0yXUR80A4aWTKxd5NGAAAAAASUVORK5CYII="),linear-gradient(#fff,#f2f2f2);
+    background-position: calc(100% - 8px) 10px,0 0;
+    background-repeat: no-repeat;
+    min-width: 60px;
+    height: 36px;
+    padding-right: 24px;
+    width: 48px;
+    margin: 0 12px 0 0;
+}
+
+.border-pro {
+    position: relative;
+}
+
+.delete-product-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+.container1{
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+
+
+.container1 .item1 {
+	border: 1px solid black;
+}
+
+.container1 .item2 {
+	border: 1px solid black;
+}
+
+.img-product {
+    width: 80px;
+}
+
+
+.a {
+    text-decoration: none;
+    color: black;
+}
+
+b{
+    font-size: 25px;
+}
+
+dl dd {
+    margin-left: 40px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.contain {
+    border: 2px solid #E2E2E4;
+    border-radius: 5px;
+}
+
+.upper-inner-container {
+    border-bottom: 2px solid #E2E2E4;
+}
+
+.lower-inner-container {
+    border-top: 2px solid #E2E2E4;
+}
+
+.grid {
+    display: grid;
+    background-color: #F1F1F3;
+    grid-template-columns: 20% 10% 40% 30%;
+}
+
+
+
+.a{
+    color: #6096A0;
+    font-weight: bold;
+}
+
+.a:hover{
+    text-decoration:none;
+    color: #6096A0;
+}
+
+span {
+    color:#6C6D6F;
+}
+
+.view-item:hover{
+    background-color: #E1E6E6;
+}
+
+.grid2 {
+    padding-top: 10px; 
+    position: relative;
+}
+
+.grid-cont {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}

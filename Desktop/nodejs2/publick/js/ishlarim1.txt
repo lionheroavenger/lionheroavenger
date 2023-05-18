@@ -1,0 +1,357 @@
+const deleteBtns = document.getElementsByClassName('delete-button')
+const deleteForm = document.getElementById('deleteForm')
+const fieldDeleteBtns = document.getElementsByClassName('deleteBtn')
+const inputSearch = document.getElementById('inputSearch')
+const searchBtn = document.getElementById('searchBtn')
+const searchForm = document.getElementById('search_form')
+const list = document.getElementById('list1')
+const grid = document.getElementById('list2')
+const Container = document.getElementById('container')
+const productsContainer = document.getElementById('products-container')
+const item = document.getElementsByClassName('item')
+const sortBy = document.getElementById('products_sort_by')
+const searchedValue = document.getElementById('searched_value')
+const sortsBy = document.getElementById('valuable')
+//const sortDirection = document.getElementById('value2')delete-btn
+const deleteTypes = document.getElementsByClassName('delete-btn')
+
+console.log('hello guys',sortsBy)
+const addProductField = document.getElementById('add_product_field')
+
+addProductField?.addEventListener('click', (e) => {
+    const parent = e.target.parentNode
+    let input_field_value = document.createElement('input')
+    let input_field_name = document.createElement('input')
+    let input_field_id = document.createElement('input')
+    let br = document.createElement('br')
+    let button = document.createElement('button')
+    input_field_id.name = `field_id`
+    input_field_id.type = 'hidden'
+    input_field_name.name=`field_name`
+    input_field_value.name=`field_value`
+    button.innerText = 'X'
+    button.type = 'button'
+    button.addEventListener('click', (e) => {
+            input_field_name.remove()
+            input_field_value.remove()
+            input_field_id.remove()
+            br.remove()
+            e.target.remove()
+            console.log('hello')
+    })
+    parent.appendChild(br)
+    parent.appendChild(input_field_id)
+    parent.appendChild(input_field_name)
+    parent.appendChild(input_field_value)
+    parent.appendChild(button)
+})
+console.log(searchedValue.value, searchedValue)
+//searchForm.submit()
+
+sortBy?.addEventListener('change', (e)=> {
+        let selectBox = e.target
+        const index = selectBox.selectedIndex
+        let jismNomi = selectBox.options[index].value
+        //localStorage.setItem('select', jismNomi);
+        //let a1 = jismNomi.split(' ', 2)
+        
+        /*let direction = 'DESC'
+
+        if(a1[1] === 'low'){
+            direction = 'ASC'
+        }*/
+
+        sortsBy.value = jismNomi
+        //sortDirection.value = direction
+        searchForm.submit()
+})
+//dfddddddddddddddddddddddddddddddddddddd
+
+/*let jismNomi = localStorage.getItem('select');
+let itemValue = localStorage.getItem('asc')
+if (list) {
+if(jismNomi) {
+    sortBy.value = jismNomi;
+}
+//ddddddddddddddddddddddddddddddddddddddddd
+/*
+searchedValue.addEventListener('input', (e) => {
+    localStorage.setItem('write', e.target.value ? e.target.value : '')
+})
+*/
+/*const write = localStorage.getItem('write')
+console.log(write)
+if (write) {
+	searchedValue.value = write
+}
+}*/
+
+/*const keyed1 = localStorage.getItem('key1') ? 'selected' : 'unselected'
+console.log(keyed, value1)
+if (keyed1) {
+    console.log('yoq')
+} else {
+    console.log('hello',localStorage.getItem('key1'))
+}*/
+
+list?.addEventListener('click', (e) => {
+    grid.style.background = 'none'
+    list.style.background = 'red'
+    localStorage.setItem('showAs', 'list');
+    Container.classList.add('container')
+    productsContainer.classList.remove('products-container')
+    productsContainer.classList.add('list-container')
+})
+
+grid?.addEventListener('click', (e) => {
+    list.style.background = 'none'
+    grid.style.background = 'red'
+    localStorage.setItem('showAs', 'grid');
+    Container.classList.add('container')
+    productsContainer.classList.add('products-container')
+    productsContainer.classList.remove('list-container')
+})
+
+if (list) {
+    const showAs = localStorage.getItem('showAs') ? localStorage.getItem('showAs') : 'list'
+    console.log(showAs)
+    if (showAs === 'list') {
+        list.click()
+    } else {
+        grid.click()
+    }
+}
+
+for(btn of deleteBtns) {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (!confirm('Do you want to delete product?')) {
+            return
+        }
+
+        console.log(e.target.dataset.productid)
+        removeProduct(e.target.dataset.productid)
+            .then((data) => {
+                if (data.status === 'OK') {
+                    window.location.reload()
+                }
+            })
+        
+    })
+}
+
+for(btns of deleteTypes) {
+    btns.addEventListener('click', async (e) => {
+        e.preventDefault()
+
+        if(e.target.classList.contains('disabled')){
+            return false
+        }
+
+        if (!confirm('Do you want to delete types?')) {
+            return
+        }
+
+        console.log(e.target.dataset.typeid)
+        const alo = await removeType(e.target.dataset.typeid)
+            //.then((data) => {
+                console.log(alo)
+                if (alo.status === 'OK') {
+                    window.location.reload()
+                } else{
+                    alert('xato:' + alo.status + ' va ' + alo.message)
+                }
+            //})
+        
+    })
+}
+
+const removeProduct = async (productId) => {
+    const response = await fetch('/admin/products/' + productId, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    return response.json()
+}
+
+const removeType = async (typeId) => {
+    const response = await fetch('/admin/product-types/' + typeId, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    return response.json()
+}
+
+
+
+/*let input_field_value = document.createElement('input')
+let input_field_name = document.createElement('input')
+let input_field_id = document.createElement('input')
+let br = document.createElement('br')
+let button = document.createElement('button')*/
+
+
+
+
+
+for(deleteField of fieldDeleteBtns){
+    //console.log(deleteField)
+    deleteField.addEventListener('click', (e) => {
+        e.preventDefault()
+        const parentElement = e.target.parentNode
+        parentElement.remove()
+        e.target.remove()
+        
+        /*if (!confirm('Do you want to delete field?')) {
+            return
+        }
+
+        if(e.target.dataset.fieldid){
+            console.log(e.target.dataset.fieldid)
+            removeField(e.target.dataset.fieldid)
+                .then((data) => {
+                    if (data.status === 'OK') {
+                        window.location.reload()
+                    }
+            })
+        }*/
+       
+        
+        
+        
+    })
+}
+
+/*const removeField = async (fieldId) => {
+    const response = await fetch('/admin/products_field/' + fieldId, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    return response.json()
+}*/
+
+searchBtn?.addEventListener('click', (e) => {
+    if(inputSearch.value){
+        console.log(inputSearch.value)
+    } else {
+        console.log('please, enter a value')
+    }
+    
+})
+
+
+
+const addProductCart = document.getElementsByClassName('add_product_to_cart')
+const korsatkich = document.getElementById('b')
+const son = document.getElementById('i')
+
+let index = 0
+const qiymat = localStorage.getItem('currentValue')
+        console.log(qiymat)
+for(Addbtn of addProductCart) {
+    Addbtn.addEventListener('click', (e)=> {
+        addProductToCart(e.target.dataset.productid ? e.target.dataset.productid : '')
+        updateCart()     
+    })
+}
+
+function updateCart() {
+    const myIndex = localStorage.getItem('index')
+    //const qiymat = +localStorage.getItem('avvalgiQiymat')
+    if (myIndex) {
+        //if(qiymat){
+            //son.innerHTML = myIndex + +qiymat
+        //} else {
+            son.innerHTML = +myIndex //+ +qiymat
+        //} 
+        korsatkich.style.display = 'block'
+        
+    }
+
+    // denazavr o'yinining funksiyasi - Runner.instance_.gameOver= () =>{}
+}
+
+function addProductToCart(productId) {
+    index++
+    const qiymatQosh =  +index  
+    /*const totalValue = +index + (+qiymat)  
+    console.log('key' + (+totalValue), productId)
+    console.log(+qiymat, avvalgiQiymat)*/
+    //if(qiymat){
+        localStorage.setItem('index', +index )
+        //console.log('mahsulot', index, 'ta')
+        //console.log('index:', +index, ' + ', 'currenValue ' , (+qiymat), ' = ' ,+totalValue)
+        //console.log('key' + (+totalValue), productId)
+        localStorage.setItem('key' + index, productId)
+    /*} else{
+        console.log('index:', +index, ' + ', 'currenValue ' , (+qiymat), ' = ' ,+totalValue)
+        localStorage.setItem('index', +index)
+        localStorage.setItem('key' + index, productId)
+    }*/
+        
+
+    
+    
+    //localStorage.setItem('key' + index, productId)
+}
+
+
+function initializeCart()  {
+    const myIndex = +localStorage.getItem('index')
+        index = myIndex
+        updateCart()
+}
+
+
+document.body.onload = function() {
+    initializeCart()
+}
+/*
+ function updateValue(){
+     document.body.onload = function(){
+        const a = localStorage.getItem('a')
+        const value = localStorage.getItem('index')
+        const addingForm = +value + (+a)
+        const qiymat = localStorage.getItem('key' + (+value)) 
+        if(+a){
+            console.log('qiymat addingForm')
+            son.innerHTML =  addingForm
+        } else{
+            console.log('qiymat value')
+            son.innerHTML = value
+        }
+                                  
+        console.log(typeof a)
+        if(+value > 0){
+            if(+a){
+                console.log('287-qator',+a)
+                localStorage.removeItem('index')
+                const q = localStorage.setItem('a', +addingForm)
+                korsatkich.style.display = 'block'
+            } else{
+                console.log('298-qator',addingForm)
+                localStorage.removeItem('index')
+                const q = localStorage.setItem('a', +value)
+                const q1 = localStorage.setItem('a1', +qiymat)
+            }
+        } 
+    }
+}
+// updateValue()
+*/
+
+
+
+
+//const alo = await getProductId(qiymat4)
+            //.then((data) => {
+//ValueBox.appendChild(selectedValue)

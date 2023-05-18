@@ -1,0 +1,16 @@
+<%- include('layout/header.ejs') %>
+    <h1><%= title%></h1>
+    <form class="product-form" method="POST" action="/profile">
+        <div class="form-controls">
+            <label for="firstname">firstname</label>
+            <input id="firstname" name="firstname" value="<%= locals.loggedInUser?.firstname %>">
+        </div>
+        <div class="form-controls">
+            <label for="type">lastname</label>
+            <input id="lastname" name="lastname" value="<%= locals.loggedInUser?.lastname %>">
+        </div>
+        <div class="form-controls">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+<%- include('layout/footer.ejs') %>

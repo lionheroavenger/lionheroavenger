@@ -1,0 +1,26 @@
+<%- include('../layout/header.ejs') %>
+    <h1><%= title%></h1>
+
+    <p><b>Welcome to types page</b></p> 
+        <div class="form-controls">
+            <table class="table table-products">
+                <tbody>
+                <% productTypes.forEach((item) => { %>
+                    <tr>
+                        <td><%= item.type %></td>
+                        <td>
+                            <a href="/admin/product-types/<%= item.id%>">Edit</a>
+                            <%if(item.used === 0) {%>
+                                <a href="/admin/product-types/<%= item.id%>" data-typeid="<%= item.id%>" class="delete-btn">Delete</a>
+                            <%} else {%>
+                                <a href="/admin/product-types/<%= item.id%>" data-typeid="<%= item.id%>" class="delete-btn disabled">Delete</a>
+                            <%}%>    
+                        </td>
+                        <td><%= item.used %></td>
+                    </tr>
+                <%}) %>
+                </tbody>
+                </table>
+        </div>
+
+<%- include('../layout/footer.ejs') %>

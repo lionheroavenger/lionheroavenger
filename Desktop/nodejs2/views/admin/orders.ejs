@@ -1,0 +1,37 @@
+<%- include('../layout/header.ejs') %>
+    <h1><%= title%> </h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Payment type</th>
+                <th scope="col">Taking form</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% orders.forEach((item, index) => { %>
+            <tr>
+                <th scope="row"><a class="a" href="/admin/order/<%= item.id%>"><%= item.id %></a></th>
+                <%if(item.payment_type === 'In-cash') {%>
+                    <td><img style="width: 35px;" src="https://www.nicepng.com/png/detail/135-1358865_-cash-icon-png-cash-out.png">  <%= item.payment_type %></td>
+                <%} else {%>
+                    <td><img style= "width: 30px" src="https://www.nicepng.com/png/detail/301-3017281_mastercard-credit-card-icon-credit-card.png"> <%= item.payment_type %></td>
+                <%}%>   
+                
+                <%if(item.taking_form === 'Pick up') {%>
+                    <td><img style="width: 35px;" src="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-hand-icon-png-image_927399.jpg"><%= item.taking_form%></td>
+                <%} else {%>
+                    <td><img style="width: 35px;" src="https://www.iconpacks.net/icons/1/free-truck-icon-1058-thumb.png"><%= item.taking_form%></td>
+                <%}%> 
+                
+                <td  title="<%= item.created %>"><%= item.createdHumanReadable%></td>  
+                <td><%= item.status %></td>
+                <td><%= item.count %></td>
+            </tr>
+        <%}) %>
+        </tbody>
+        </table>
+<%- include('../layout/footer.ejs') %>

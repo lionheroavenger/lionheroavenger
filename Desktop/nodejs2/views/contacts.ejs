@@ -1,0 +1,9 @@
+<%- include('layout/header.ejs') %>
+    <h1><%= title%></h1>
+    <div class="contacts">
+        <% contact.forEach((item) => { %>
+            <div><span><%= item.name %> </span> <span><%= item.number %> </span></div>
+            <div><span><%= item.matn %></span></div>
+        <%}) %>
+    </div>
+<%- include('layout/footer.ejs') %>

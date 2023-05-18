@@ -1,0 +1,212 @@
+
+
+const myIndex = localStorage.getItem('index')
+//const qiymat4 = localStorage.getItem('key' + myIndex)
+const b = []
+for(let a = 0; myIndex > a; a++){
+    b.push(localStorage.getItem('key' + (a+1)))
+}
+
+
+
+const productsCount = []
+for (let i = 0; i < myIndex; i++) {
+    const keyValue = localStorage.getItem('key' + (i + 1))
+    console.log(keyValue)
+    productsCount[keyValue] = (productsCount[keyValue] ?? 0) + 1
+
+    
+}
+
+console.log(b)
+
+
+
+let firstBreed = localStorage.getItem('captiva') ?? 1
+
+const getProductId = async (productIds) => {
+    const response = await fetch('/products/details?ids=' + productIds.join(), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const jsonData = await response.json()
+    return jsonData
+}
+
+
+const input = document.getElementById('idInput')
+input.value = b
+
+const ValueBoxx = document.getElementById('value_box')
+const InputBoxx = document.getElementById('input_box')
+
+if(b.length){
+        const a = getProductId(b)
+        //console.log(massive)
+        a.then((data) => {
+            data.forEach((item) => {
+                //==============qiymat olish===================\\
+                const img = document.createElement('img')
+                img.setAttribute('src', item.image)
+            
+                //================================================\\
+
+
+
+                //==============qiymatni ishlatish===================\\
+                const ul = document.createElement('ul')
+                const li = document.createElement('li')
+                const li2 = document.createElement('li')
+                const li3 = document.createElement('li')
+                const li4 = document.createElement('li')
+                const li5 = document.createElement('li')
+                const massive = [1,2,3,4,5,6,7,8,9]
+                const selector = document.createElement('select')
+                const inputHid = document.createElement('input')
+                inputHid.type = 'hidden'
+                inputHid.dataset.ids = item.id
+                console.log('ids',inputHid.dataset.ids)
+                selector.classList = 'cart-item-dropdown'
+                const myIndex = +localStorage.getItem('index')
+                let massiveIndex = [myIndex]
+                let options = ''
+                selector.dataset.count = productsCount[item.id]
+                console.log(selector.dataset.count)
+                    for(let k = 0; k < massive.length; k++) {
+                        let selected = ''
+                        
+                        if (massive[k] === productsCount[item.id]) {
+                            selected = 'selected'
+                            console.log(massiveIndex[i])
+                        }
+                        options = options + '<option ' + selected + ' value="' + massive[k] + '">' + massive[k] + '</option>'
+                    }
+                    selector.innerHTML = options
+
+                    const qiymat1 = +localStorage.getItem('qiymat1')
+                //selector.onfocus = setPreviousValue
+                /*selector.addEventListener('focus', (e) => {
+                    console.log(e.target.value)
+                    setPreviousValue(e.target.value)
+                  });
+                var previous;
+
+                function setPreviousValue(newValue) {
+                    previous = newValue;
+                    console.log(previous)
+                    localStorage.setItem('avvalgiQiymat', +previous)
+                    if(+previous){
+                        return previous
+                    }
+                }*/
+
+                selector.addEventListener('change', (e) => {
+                    const selector1 = e.target
+                    const selectedIndex = e.target.selectedIndex
+                    const son = document.getElementById('i')
+		            const currentValue = e.target.options[selectedIndex].value
+                    const previousValue = e.target.dataset.count
+                    console.log(previousValue)
+                    if (!currentValue) {
+		            	return
+		            }
+
+                    const diffValue = currentValue - previousValue
+
+                    if (diffValue > 0) {
+                        // bu erda mahsulot ko'paydi
+                        for(let i = (index + 1); i <= (index + diffValue); i++){
+                            localStorage.setItem('key'+ i, inputHid.dataset.ids)
+                        }
+
+                        index += diffValue
+                        
+                    } else {
+                        clearKeys()
+                        for(const [key, productCount] of Object.entries(productsCount)) {
+                            if (key == inputHid.dataset.ids) {
+                                const upto = index + +currentValue
+                                console.log('1-qiymat: ',index, +currentValue)
+                                for(let k = index + 1; k <= upto; k++) {
+                                    //console.log('1-ni ichida',key, productCount)
+                                    localStorage.setItem('key' + k, key)
+                                }
+                                index += +currentValue
+                            } else {
+                                const upto = index + +productCount
+                                console.log('2-qiymat: ',index , +productCount)
+                                for(let k = index + 1; k <= upto; k++) {
+                                    //console.log('2-ni ichida',key, productCount)
+                                    localStorage.setItem('key' + k, key)
+                                }
+                                index += +productCount
+                            }
+                        }
+                    }
+                    localStorage.setItem('index', index)
+                    e.target.dataset.count = currentValue
+                    updateCart()
+                    //selector1.onfocus = setPreviousValue(breed)
+                    //const prevValue = setPreviousValue(breed)
+                    const myIndex = +localStorage.getItem('index')
+
+                    // if(currentValue === '1'){
+                    //    son.innerHTML = 1
+                    // } else{
+                    //     son.innerHTML = +currentValue 
+                    // }
+
+		            //breed -(minus) oldingi qiymati
+                    // const oldingiQiymat = +localStorage.getItem('currentValue')
+                    //console.log('selector qiymati ', +currentValue, 'avvalgi qiymat ', +oldingiQiymat)
+                    //console.log('selector qiymati ', +currentValue + +oldingiQiymat)
+                
+                
+		            
+
+                   // const addingForm = +currentValue + (+myIndex)
+                    //console.log('currentValue',+currentValue,myIndex,addingForm)
+                    
+		            // localStorage.setItem('currentValue', currentValue)
+                    // localStorage.setItem('avvalgiQiymat', +oldingiQiymat)
+                })
+                    
+
+                console.log(selector)
+                li.classList = 'none-dot'
+                ul.classList = 'border-pro'
+                li2.classList = 'none-dot'
+                li3.classList = 'none-dot'
+                li4.classList = 'none-dot'
+                li5.classList = 'none-dot'
+                li.append('name: ',item.name, ' ')
+                li2.append('price: ',item.price, ' ')
+                li4.append('image: ',img, ' ')
+                li5.append(selector)
+                li3.append('description: ',item.description, ' ')
+                ul.appendChild(li)
+                ul.appendChild(li2)
+                ul.appendChild(li4)
+                ul.appendChild(li5)
+                ul.appendChild(li3)
+                ValueBoxx.appendChild(ul)
+                //InputBoxx.appendChild(selector)
+                //================================================\\
+        })
+        })
+        
+        
+} else {
+    console.log('yo\'q')
+}
+
+function clearKeys() {
+    for(let i = 1; i <= index; i++){
+        localStorage.removeItem('key' + i)
+    }
+    index = 0
+    localStorage.setItem('index', index)
+}

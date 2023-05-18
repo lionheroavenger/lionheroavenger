@@ -1,0 +1,8 @@
+<%- include('layout/header.ejs') %>
+    <h1><%= title%></h1>
+    <div class="inform">
+        <% inform.forEach((item) => { %>
+            <div><a class="nav-link" href="<%= item.image %>"><%= item.name %></a></div>
+        <%}) %>
+    </div>
+<%- include('layout/footer.ejs') %>

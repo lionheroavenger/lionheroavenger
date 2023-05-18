@@ -1,0 +1,28 @@
+<%- include('../layout/header.ejs') %>
+    <h1><%= title%></h1>
+    <form class="product-form" method="POST" action="/types/<%= product.id %>">
+        <div class="form-controls">
+            name: <%= product.name %>
+        </div>
+        <div class="form-controls">
+            <label for="type">Type</label>
+            <select id="type" name="type">
+                <option value="">--Select product type--</option>
+                <% productTypes.forEach((item) => { %>
+                    <%
+                    let selectedType = ''
+                    if (products.type.toLowerCase() === item.type.toLowerCase()) {
+                        selectedType = 'selected'
+                     
+                    }
+                    %>
+                    <option <%= selectedType %> value="<%= item.type %>"><%= item.type %></option>
+                <%}) %>
+            </select>
+        </div>
+
+        <div class="form-controls">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+<%- include('../layout/footer.ejs') %>

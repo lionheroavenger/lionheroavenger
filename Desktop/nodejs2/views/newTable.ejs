@@ -1,0 +1,37 @@
+<%- include('layout/header.ejs') %>
+    <h1><%= title%></h1>
+    
+    <table>
+        <tr>
+            
+            
+                
+               
+        </tr>
+    </table>
+
+
+    <div>
+        <div class="container" id="container">
+            <div id="products-container" class="list-container">
+                
+                
+                <% products.forEach((item) => { %>
+                    <div>№ order: <%= item.order_id %></div>
+                        <div class="item">
+                            <div>name: <%= item.name %></div>
+                            <div>price: <%= item.price %></div>
+                            <div>image: <img src="<%= item.image %>"></img></div>
+                            <div>description: <%= item.description%></div>
+                            <div>count: <%= item.count%></div>
+                        </div>
+                <%})%>
+
+                
+                <!--Product searched-->
+                 
+        </div>
+        </div>
+        <!--===================-->
+    </div>
+<%- include('layout/footer.ejs') %>

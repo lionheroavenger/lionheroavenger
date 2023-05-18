@@ -1,0 +1,37 @@
+<%- include('layout/header.ejs') %>
+<h1><%= title%></h1>
+<div class="contacts">
+    <ul>
+        <li>login: <%= locals.loggedInUser?.login %></li>
+        <li>firstname: <%= locals.loggedInUser?.firstname %></li>
+        <li>lastname: <%= locals.loggedInUser?.lastname %></li>
+        <li>role: <%= locals.loggedInUser?.role %></li>
+    </ul>
+
+    
+    <div class="form-controls">
+        <a href="/edit-user">edit-user</a>
+    </div>
+    <!--<% users.forEach((item) => { %>
+            <% if (locals.loggedInUser?.role === 'administrator' && item.show) { %>
+                <ul>
+                    <li><%= item.login %></li>
+                    <li><%= item.password %></li>
+                    <li><%= item.firstname %></li>
+                    <li><%= item.lastname %></li>
+                    <li><%= item.role %></li>
+                </ul>
+            <% }  else { %>
+                <%if (locals.loggedInUser?.role === 'user' && item.hide) {%>
+                    <ul>
+                        <li><%= item.login %></li>
+                        <li><%= item.password %></li>
+                        <li><%= item.firstname %></li>
+                        <li><%= item.lastname %></li>
+                        <li><%= item.role %></li>
+                    </ul>
+                <% } %>
+            <% } %>    
+    <%}) %>-->
+</div>
+<%- include('layout/footer.ejs') %>

@@ -1,0 +1,57 @@
+<%- include('layout/header.ejs') %>
+    <h1><%= title%></h1>
+    <div class="products">
+       <!--
+        <option value="">-----Tanla-----</option>
+                                        <option value="price high" <%if(sortby === 'price high') {%> selected <%}%>>Price: High to low</option>
+                                        <option value="price low" <%if(sortby === 'price low') {%> selected <%}%>>Price: Low to high</option>
+                                        <option value="created high" <%if(sortby === 'created high') {%> selected <%}%>> Newest product</option>-->
+                <div>
+                    <div>
+                        <div class="no1">
+                            <button id="list1" class="list">list</button>
+                            <button id="list2" class="grid">grid</button>    
+                                <div>
+                                    <select name="iii" id="products_sort_by">
+                                        
+                                        <option value="">-----Tanla-----</option>
+                                        <option value="price high" <%if(locals.sortby === 'price high') {%> selected <%}%>>Price: High to low</option>
+                                        <option value="price low" <%if(locals.sortby === 'price low') {%> selected <%}%>>Price: Low to high</option>
+                                        <option value="created high" <%if(locals.sortby === 'created high') {%> selected <%}%>> Newest product</option>  
+                                    </select>
+                                </div>
+                        </div>
+
+                        
+                            <div>
+                                <% if(sortby === 'price high' || sortby === 'price low' || sortby === 'created high'){ %>
+                                <%console.log('bu yerdaman')%>
+                                <%}%>
+                            </div>
+                   
+                    <div>
+                        <div class="container" id="container">
+                            <div id="products-container" class="list-container">
+                                
+                                
+                                    <% pro.forEach((item) => { %>
+                                        <div class="item">
+                                            <div><%= item.name %></div>
+                                            <div>
+                                                <a href="/about-item/<%= item.id%>"><img src="<%= item.image %>"></a>
+                                                <%= item.description %>
+                                            </div>
+                                            <div>cost: <%= item.price %></div>
+                                            <button data-productId="<%= item.id%>" class="add_product_to_cart">Add to cart</button>
+                                        </div>
+                                     <%}) %>
+
+                                
+                                <!--Product searched-->
+                                 
+                        </div>
+                        </div>
+                        <!--===================-->
+                    </div>    
+    </div>
+<%- include('layout/footer.ejs') %>

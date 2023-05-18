@@ -1,0 +1,21 @@
+<%- include('../layout/header.ejs') %>
+    <h1><%= title%></h1>
+    <form class="product-form" method="POST" action="/admin/product-types/<%= types.id %>">
+        <div class="form-controls">
+            <label for="name">Name</label>
+                <input id="name" name="type" value="<%= types.type %>">
+        </div>
+
+        <% console.log('typessssss',types[0]) %>
+  
+        
+        <div class="form-controls">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+
+    
+   
+    
+    
+<%- include('../layout/footer.ejs') %>

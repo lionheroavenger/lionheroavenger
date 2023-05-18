@@ -1,0 +1,33 @@
+<%- include('layout/header.ejs') %>
+    <h1><%= title%></h1>
+      <table class="table table-product">
+        <div class="container" id="container">
+            <div style="text-align: center;">
+                <div>
+                    <button id="list1" class="list">list</button>
+                    <button id="list2" class="grid">grid</button> 
+                </div> 
+                <select name="iii" id="products_sort_by">
+                    <option value="">-----Tanla-----</option>
+                    <option value="price high">Price: High to low</option>
+                    <option value="price low">Price: Low to high</option>
+                    <option value="created high">Newest product</option>
+                </select>
+            </div>
+            <div id="products-container" class="list-container">
+            <% products.forEach((item) => { %>
+                <div class="item">
+                    <div><%= item.name %></div>
+                    <div><%= item.price %></div>
+                    <div>
+                        <a href="/about-item/<%= item.id%>" title="<%= item.name %>">
+                            <img alt="<%= item.name %>" src="<%= item.image %>" />
+                        </a>
+                        <%= item.description %>
+                    </div>  
+                </div>
+            <%}) %>
+            </div>
+        </div>
+    </table>
+<%- include('layout/footer.ejs') %>

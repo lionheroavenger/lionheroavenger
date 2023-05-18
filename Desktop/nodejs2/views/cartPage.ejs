@@ -1,0 +1,17 @@
+<%- include('layout/header.ejs') %>
+<h1><%= title%></h1>
+<div id="products-container" class="list-container">
+    <div id="value_box">
+        <input name="ids" id="idInput" type="hidden">
+    </div>
+    <div id="input_box">
+        
+    </div>
+
+    <button id="buttonSend" class="hidden"><a href="/proceedToCheckOut">Proceed to Checkout</a></button>
+</div>
+
+
+
+<script src="/js/cart.js"></script>
+<%- include('layout/footer.ejs') %>

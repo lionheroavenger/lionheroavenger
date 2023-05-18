@@ -1,0 +1,34 @@
+<%- include('layout/header.ejs') %>
+    <h1><%= title%></h1>
+    <div class="contacts">
+            <div class="form-controls">
+               
+                <% products.forEach((item) => { %>
+                    <div class="form-controls">
+                        name: <%= item.name %>
+                    </div>
+                    <div class="form-controls">
+                        price: <%= item.price %>
+                        
+                    </div>
+                    <div class="form-controls">
+                        image: <img src="<%= item.image %>"></img>
+                    </div>
+            
+                    <div class="form-controls">
+                        description: <%= item.description%>
+                    </div>
+
+                    <button data-productId="<%= item.id%>" class="add_product_to_cart">Add to cart</button>
+                  <%})%>  
+
+
+                  <% product_fields.forEach((item) => { %>
+                    <div class="form-controls">
+                       <%= item.field_name%>: <%= item.field_value%>
+                       <%console.log(item.field_name,':',item.field_value)%>
+                    </div>
+                  <%})%> 
+            </div>        
+    </div>
+<%- include('layout/footer.ejs') %>
